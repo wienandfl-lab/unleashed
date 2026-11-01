@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UNLEASHED — The Monster Lineup in 3D</title>
+<meta name="theme-color" content="#07070a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{"imports":{
+  "three":"https://unpkg.com/three@0.169.0/build/three.module.js",
+  "three/addons/":"https://unpkg.com/three@0.169.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader__bar"><i id="loader-fill"></i></div>
+  <div class="loader__txt">CHILLING CANS</div>
+</div>
+
+<canvas id="gl"></canvas>
+<div id="scroll-space" aria-hidden="true"></div>
+
+<div class="ui">
+
+  <header class="hdr">
+    <span class="hdr__logo">UN<b>LEASHED</b></span>
+    <span class="hdr__meta" id="hdr-meta">500 ML · ALUMINIUM · 6 FLAVOURS</span>
+  </header>
+
+  <div class="rail" aria-hidden="true">
+    <div class="rail__line"><i id="rail-fill"></i></div>
+    <ol class="rail__steps">
+      <li data-step="0">CAN</li>
+      <li data-step="1">CHILL</li>
+      <li data-step="2">LINEUP</li>
+      <li data-step="3">FLAVOURS</li>
+      <li data-step="4">PICK</li>
+    </ol>
+  </div>
+
+  <div class="hint" id="hint"><span>SCROLL</span><i></i></div>
+
+  <!-- text panels -->
+  <section class="panel" data-from="0.00" data-to="0.18">
+    <p class="panel__tag">01 — THE CAN</p>
+    <h1 class="panel__h">Half a litre<br>of bad decisions.</h1>
+    <p class="panel__p">Rolled aluminium, 0.097 mm thick at the wall. It holds three atmospheres of pressure and weighs 13 grams empty — assembling itself here from body, neck, lid and tab.</p>
+  </section>
+
+  <section class="panel" data-from="0.18" data-to="0.36">
+    <p class="panel__tag">02 — SERVE COLD</p>
+    <h1 class="panel__h">Best at<br>four degrees.</h1>
+    <p class="panel__p">Cold suppresses the bitterness of caffeine and taurine and keeps the carbonation dissolved. Warm, the same liquid tastes like cough syrup.</p>
+    <ul class="panel__spec">
+      <li><b>160 mg</b>CAFFEINE</li>
+      <li><b>54 g</b>SUGAR</li>
+      <li><b>230</b>KCAL</li>
+    </ul>
+  </section>
+
+  <section class="panel" data-from="0.36" data-to="0.58">
+    <p class="panel__tag">03 — THE LINEUP</p>
+    <h1 class="panel__h">Six cans.<br>Six arguments.</h1>
+    <p class="panel__p">The green original, the sugar-free Ultras, and the juice-forward tropicals. Same 160 mg of caffeine in every one — everything else is negotiable.</p>
+  </section>
+
+  <section class="panel" data-from="0.58" data-to="0.78">
+    <p class="panel__tag">04 — FLAVOURS</p>
+    <h1 class="panel__h">The claw<br>picks a side.</h1>
+    <p class="panel__p">Original is the benchmark: apple-ish, medicinal, unmistakable. Ultra White went sugar-free and accidentally became the best one. Mango Loco tastes like a melted ice lolly.</p>
+  </section>
+
+  <section class="panel" data-from="0.78" data-to="1.00">
+    <p class="panel__tag">05 — PICK ONE</p>
+    <h1 class="panel__h" id="pick-h">Your move.</h1>
+    <p class="panel__p" id="pick-p">Click a can to pull it forward. Drag anywhere to orbit the rack — every can here is real geometry with its own label texture, not a photo.</p>
+    <ul class="panel__spec" id="pick-spec"></ul>
+    <div class="panel__cta">DRAG TO ORBIT · CLICK A CAN</div>
+  </section>
+
+  <!-- flavour chips, only live in the last phase -->
+  <div class="chips" id="chips" aria-label="Flavour picker"></div>
+
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
